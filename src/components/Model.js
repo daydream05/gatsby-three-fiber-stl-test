@@ -43,7 +43,7 @@ const Model = ({ url }) => {
     >
       <meshPhongMaterial
         attach="material"
-        color="black"
+        color="#272727"
         specular={0x101010}
       />
       <Controls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />

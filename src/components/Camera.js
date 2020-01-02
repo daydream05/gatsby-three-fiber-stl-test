@@ -2,17 +2,19 @@ import React from 'react'
 import { useThree } from 'react-three-fiber'
 
 const Camera = () => {
-  const { size } = useThree()
+  const { viewport } = useThree()
+  
+  console.log(viewport)
 
   return (
     <orthographicCamera
       args={[
-        (size.width) / -2,
-        (size.width) / 2,
-        size.height / 2,
-        size.height / -2,
-        150,
-        1000,
+        viewport.width / -2,
+        viewport.width / 2,
+        viewport.height / 2,
+        viewport.height / -2,
+        0.1,
+        2000,
       ]}
     />
   )
