@@ -37,15 +37,11 @@ const Model = ({ url }) => {
     <mesh
       geometry={model}
       scale={[1, 1, 1]}
-      rotation={[Math.PI / -2, 0, Math.PI / -2]}
+      rotation={[Math.PI / -2, 0, 0]}
       receiveShadow
       castShadow
     >
-      <meshPhongMaterial
-        attach="material"
-        color="#272727"
-        specular={0x101010}
-      />
+      <meshPhongMaterial attach="material" color="#272727" specular="#272727" />
       <Controls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
     </mesh>
   ) : null
@@ -63,6 +59,7 @@ const getVolume = (geometry) => {
     p1.fromBufferAttribute(position, i * 3 + 0);
     p2.fromBufferAttribute(position, i * 3 + 1);
     p3.fromBufferAttribute(position, i * 3 + 2);
+
     sum += signedVolumeOfTriangle(p1, p2, p3)
   }
 

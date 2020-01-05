@@ -11,7 +11,15 @@ import Camera from "../components/Camera"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <Canvas orthographic shadowMap>
+    <Canvas
+      shadowMap
+      orthographic
+      camera={{
+        far: 2000,
+        fov: 35,
+        near: 0.1,
+      }}
+    >
       <ambientLight intensity={1.5} />
       <hemisphereLight args={[0x443333, 0x111122]} />
       <Model url="/heath-pickle.stl" />
