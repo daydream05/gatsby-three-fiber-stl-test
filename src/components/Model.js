@@ -41,7 +41,13 @@ const Model = ({ url }) => {
       receiveShadow
       castShadow
     >
-      <meshPhongMaterial attach="material" color="#272727" specular="#272727" />
+      <meshLambertMaterial
+        color={0x909090}
+        attach="material"
+        wireframe={false}
+        overdaw={1}
+        flatShading
+      />
       <Controls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
     </mesh>
   ) : null
