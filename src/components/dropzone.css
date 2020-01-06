@@ -1,0 +1,19 @@
+.dropzone {
+  padding: 24px 32px;
+  border: 2px dashed #eeeeee;
+  background-color: #fafafa;
+}
+
+.loading {
+}
+
+.loading-bar-container {
+  width: 200px;
+  height: 3px;
+  background: #272727;
+}
+
+.loading-bar {
+  height: 3px;
+  background: white;
+}
