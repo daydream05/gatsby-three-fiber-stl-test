@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 
 import "./style.css"
 import Model from "../components/Model"
+import { Loading } from "../components/DropZone"
 
 const IndexPage = () => (
   <Layout>
@@ -22,7 +23,8 @@ const IndexPage = () => (
       <hemisphereLight args={[0x443333, 0x111122]} />
       <Model url="/heath-pickle.stl" />
     </Canvas>
-    <Link to="/page-2/">Go to page 2</Link>
+    <Loading />
+    <Link to="/instant-quote/">Go to instant quote</Link>
   </Layout>
 )
 

@@ -1,12 +1,10 @@
 import React, { useCallback, useState, useEffect } from "react"
 import * as THREE from 'three'
 import { useDropzone } from "react-dropzone"
-import { a, useTransition } from 'react-spring'
-import './dropzone.css'
+import './drop-zone.css'
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader"
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader"
 import LoadingRing from "./LoadingRing"
-import base64ArrayBuffer from "../utils/base64ArrayBuffer"
 
 const calculatePrice = (volume) => {
   // volume in millimeters cubed
@@ -73,17 +71,20 @@ export const Loading = () => {
     THREE.DefaultLoadingManager.onProgress = (url, itemsLoaded, itemsTotal) => {
       setLoading(false)
     }
+
+    // cleanup()
+    return () => {}
   }, [])
 
-  return isLoading ? (
+  return isLoading && (
     <div>
       <span>Analyzing</span>
       <LoadingRing />
     </div>
-  ) : null
+  )
 }
 
-function DropZone() {
+const DropZone = () => {
   const [modelAttributes, setModelAttributes] = useState({
     volume: 0,
     dimensions: {
@@ -98,7 +99,6 @@ function DropZone() {
   const [isRejected, rejectFile] = useState(false) 
 
   const onDrop = useCallback(acceptedFiles => {
-    console.log('it got dropped')
     acceptedFiles.forEach(file => {
       const reader = new FileReader()
       const maxFileSize = 1000 * 1000 * 100 // 100 Mb
@@ -158,7 +158,7 @@ function DropZone() {
       }
     })
   }, [])
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, multiple: false })
 
   console.log(calculatePrice(modelAttributes.volume), modelAttributes)
 
